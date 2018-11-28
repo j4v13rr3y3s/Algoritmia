@@ -1,0 +1,49 @@
+Al aire librepackage algoritmia_recursividad;
+
+
+import java.util.Scanner;
+/**
+ *
+ * @author JUAN REYES
+ */
+public class Algoritmia_Recursividad {
+     
+    private static Scanner ALGORITMIA;
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        int numero;
+        
+        ALGORITMIA = new Scanner (System.in);
+        System.out.println("Digite el numero entero positivo:");
+        
+        numero = ALGORITMIA.nextInt();
+        ALGORITMIA.close();
+        
+        int numeroDeCifras = String.valueOf(numero).length();
+        System.err.printf("\nEl numero %d invertido es el:%S\n", numero, invertir(numero, numeroDeCifras-1));
+    }
+    
+    private static int invertir (int numero, int pos){
+        
+        if(numero<10){
+            return numero;
+            
+        }else{
+            return numero%10 * (int)Math.pow(10,pos ) + invertir(numero/10, pos-1);
+        }
+        
+    }
+    
+    private static String invertirNumero (int numero){
+        
+        if (numero<10){
+            return String.valueOf(numero);    
+        }
+        else{
+            return String.valueOf(numero%10) + invertirNumero(numero/10);
+        }
+    }
+    
+}
